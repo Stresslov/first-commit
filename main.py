@@ -6,6 +6,7 @@ import os
 TOKEN = os.getenv('TOKEN')
 bot = telebot.TeleBot(TOKEN)
 
+bot.remove_webhook()
 
 # Обработчик команды /start
 @bot.message_handler(commands=['start'])
