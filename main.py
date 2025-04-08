@@ -37,7 +37,7 @@ def start(message):
 # Обработка выбора задания
 @bot.message_handler(func=lambda message: message.text.startswith("Задание"))
 def choose_type(message):
-    task_number = message.text.replace("Задание ", "").strip()
+    task_number = message.text.replace("Задание ", "").strip().replace(" ", "-")
     user_task[message.chat.id] = task_number
 
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -72,7 +72,7 @@ def send_file(message):
         with open(file_path, 'rb') as file:
             bot.send_document(chat_id, file)
     else:
-        bot.send_message(chat_id, "Файл не найден.")
+        bot.send_message(chat_id, "Файл не найден. Пожалуйста, попробуйте выбрать другое задание или вернитесь назад.")
 
 bot.remove_webhook()
 bot.infinity_polling()
