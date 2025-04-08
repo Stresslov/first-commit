@@ -66,7 +66,7 @@ def send_file(message):
     else:
         filename = f"Домашняя работа {task_number} задание.pdf"
 
-    file_path = os.path.join('files', folder, filename)
+    file_path = os.path.join(folder, filename)
 
     if os.path.exists(file_path):
         with open(file_path, 'rb') as file:
